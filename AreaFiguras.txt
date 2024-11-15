@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Timers;
+
+namespace pryCalcularAreas
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int lados, Btriangulo, Htriangulo;
+            double Radio, Acirculo, Atriangulo, L1, L2, L3, L4, Acuadrado, Arectangulo, Bmayor, Bmenor, Htrapecio, Atrapecio, CondicionL4;
+            lados = 0;
+
+            Console.WriteLine("Ingresa la cantidad de lados que tiene la figura");
+            lados = int.Parse(Console.ReadLine());
+
+            if (lados == 0)
+            {
+                Console.WriteLine("Tu figura es un Círculo");
+                Console.WriteLine("Ingresa el valor del radio");
+                Radio = double.Parse(Console.ReadLine());
+                Acirculo = 3.1416 * (Radio * Radio);
+                Console.WriteLine("El área del círculo es: " + Acirculo);
+            }
+            else if (lados == 3)
+            {
+                Console.WriteLine("Tu figura es un Triángulo");
+                do
+                {
+                    Console.WriteLine("Ingresa el valor de la base del triángulo (debe ser positivo): ");
+                    Btriangulo = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Ingresa el valor de la altura del triángulo (debe ser positivo): ");
+                    Htriangulo = int.Parse(Console.ReadLine());
+
+                    if (Btriangulo <= 0 || Htriangulo <= 0)
+                    {
+                        Console.WriteLine("Ambos valores deben ser positivos. Intenta de nuevo.");
+                    }
+                }
+                while (Btriangulo <= 0 || Htriangulo <= 0);
+                Atriangulo = (Btriangulo * Htriangulo) / 2.0;
+                Console.WriteLine("El área del triángulo es: " + Atriangulo);
+            }
+
+            else if (lados == 4)
+            {
+                Console.WriteLine("¿Para calcular el area de tu figura se necesita la Altura?");
+                Console.WriteLine("Si=[1]");
+                Console.WriteLine("No=[2]");
+                CondicionL4 = double.Parse(Console.ReadLine());
+                if (CondicionL4 == 1)
+                {
+                    Console.WriteLine("Tu figura es un Trapecio");
+                    Console.WriteLine("Ingresa el valor de la base mayor");
+                    Bmayor = double.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Ingresa el valor de la base menor");
+                    Bmenor = double.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Ingresa el valor de la altura del trapecio");
+                    Htrapecio = double.Parse(Console.ReadLine());
+
+                    Atrapecio = ((Bmayor + Bmenor) * Htrapecio) / 2.0;
+                    Console.WriteLine("El área del trapecio es: " + Atrapecio);
+
+                }
+                else if (CondicionL4 == 2)
+                {
+                    Console.WriteLine("Ingresa el valor del lado 1");
+                    L1 = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Ingresa el valor del lado 2");
+                    L2 = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Ingresa el valor del lado 3");
+                    L3 = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Ingresa el valor del lado 4");
+                    L4 = double.Parse(Console.ReadLine());
+
+                    if (L1 == L2 && L2 == L3 && L3 == L4)
+                    {
+                        Console.WriteLine("Tu figura es un Cuadrado");
+                        Acuadrado = L1 * L1;
+                        Console.WriteLine("El área del cuadrado es: " + Acuadrado);
+                    }
+                    else if (L1 == L3 && L2 == L4)
+                    {
+                        Console.WriteLine("Tu figura es un Rectángulo");
+                        Arectangulo = L1 * L2;
+                        Console.WriteLine("El área del rectángulo es: " + Arectangulo);
+                    }
+                    else
+                    {
+                        Console.WriteLine("La figura no es un cuadrado ni un rectángulo estándar.");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se puede calcular el área para la cantidad de lados ingresada.");
+            }
+            Console.ReadKey();
+        } 
+    }
+}
